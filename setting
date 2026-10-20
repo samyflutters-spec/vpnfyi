@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TURKY VPN - Settings</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #172554, transparent 45%),
+        linear-gradient(135deg, #020617, #0f172a);
+    color: white;
+    padding: 25px;
+    transition: .3s;
+}
+
+body.light {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+}
+
+.header {
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 28px;
+}
+
+.header p {
+    color: #94a3b8;
+    margin-top: 7px;
+}
+
+.card {
+    background: rgba(30, 41, 59, .95);
+    border: 1px solid #334155;
+    border-radius: 22px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+body.light .card {
+    background: white;
+    border-color: #cbd5e1;
+}
+
+.title {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #334155;
+    gap: 15px;
+}
+
+.setting:last-child {
+    border-bottom: none;
+}
+
+.setting-name {
+    font-size: 16px;
+}
+
+.setting-description {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Select */
+
+select {
+    background: #0f172a;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 9px;
+}
+
+/* Toggle */
+
+.switch {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #475569;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+input:checked + .slider {
+    background: #22c55e;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* Reset */
+
+.reset {
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 12px;
+    background: #ef4444;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.reset:hover {
+    background: #dc2626;
+}
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1 id="pageTitle">⚙️ Settings</h1>
+        <p id="pageDescription">Turky VPN preferences</p>
+    </div>
+
+
+    <!-- GENERAL -->
+
+    <div class="card">
+
+        <div class="title" id="generalTitle">
+            General
+        </div>
+
+        <!-- Language -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="languageName">
+                    Language
+                </div>
+
+                <div class="setting-description" id="languageDescription">
+                    Application language
+                </div>
+            </div>
+
+            <select id="language">
+
+                <option value="en">
+                    English
+                </option>
+
+                <option value="ar">
+                    العربية
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Theme -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="themeName">
+                    Theme
+                </div>
+
+                <div class="setting-description" id="themeDescription">
+                    Application appearance
+                </div>
+            </div>
+
+            <select id="theme">
+
+                <option value="dark">
+                    Dark
+                </option>
+
+                <option value="light">
+                    Light
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONNECTION -->
+
+    <div class="card">
+
+        <div class="title" id="connectionTitle">
+            Connection
+        </div>
+
+
+        <!-- Auto Connect -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="autoName">
+                    Auto Connect
+                </div>
+
+                <div class="setting-description" id="autoDescription">
+                    Connect automatically
+                </div>
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="autoConnect">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Remember Server -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="rememberName">
+                    Remember Server
+                </div>
+
+                <div class="setting-description" id="rememberDescription">
+                    Remember your last server
+                </div>
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="rememberServer">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISPLAY -->
+
+    <div class="card">
+
+        <div class="title" id="displayTitle">
+            Display
+        </div>
+
+
+        <!-- Show IP -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="ipName">
+                    Show IP Address
+                </div>
+
+                <div class="setting-description" id="ipDescription">
+                    Show your VPN IP
+                </div>
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="showIP" checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Show Speed -->
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="speedName">
+                    Show Speed
+                </div>
+
+                <div class="setting-description" id="speedDescription">
+                    Show download and upload speed
+                </div>
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="showSpeed" checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <div class="card">
+
+        <div class="title" id="notificationTitle">
+            Notifications
+        </div>
+
+        <div class="setting">
+
+            <div>
+                <div class="setting-name" id="notificationName">
+                    Notifications
+                </div>
+
+                <div class="setting-description" id="notificationDescription">
+                    Show connection notifications
+                </div>
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="notifications" checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESET -->
+
+    <div class="card">
+
+        <button class="reset" onclick="resetSettings()" id="resetButton">
+            Reset Settings
+        </button>
+
+    </div>
+
+
+    <div class="footer">
+        Nova VPN • Settings
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   Load Settings
+========================= */
+
+const defaults = {
+    language: "en",
+    theme: "dark",
+    autoConnect: false,
+    rememberServer: true,
+    showIP: true,
+    showSpeed: true,
+    notifications: true
+};
+
+let settings =
+    JSON.parse(localStorage.getItem("novaSettings"))
+    || defaults;
+
+
+/* =========================
+   Elements
+========================= */
+
+const language =
+    document.getElementById("language");
+
+const theme =
+    document.getElementById("theme");
+
+const autoConnect =
+    document.getElementById("autoConnect");
+
+const rememberServer =
+    document.getElementById("rememberServer");
+
+const showIP =
+    document.getElementById("showIP");
+
+const showSpeed =
+    document.getElementById("showSpeed");
+
+const notifications =
+    document.getElementById("notifications");
+
+
+/* =========================
+   Apply Settings
+========================= */
+
+function applySettings() {
+
+    language.value = settings.language;
+
+    theme.value = settings.theme;
+
+    autoConnect.checked =
+        settings.autoConnect;
+
+    rememberServer.checked =
+        settings.rememberServer;
+
+    showIP.checked =
+        settings.showIP;
+
+    showSpeed.checked =
+        settings.showSpeed;
+
+    notifications.checked =
+        settings.notifications;
+
+
+    if (settings.theme === "light") {
+
+        document.body.classList.add("light");
+
+    } else {
+
+        document.body.classList.remove("light");
+
+    }
+
+
+    updateLanguage();
+}
+
+
+/* =========================
+   Save
+========================= */
+
+function saveSettings() {
+
+    settings.language =
+        language.value;
+
+    settings.theme =
+        theme.value;
+
+    settings.autoConnect =
+        autoConnect.checked;
+
+    settings.rememberServer =
+        rememberServer.checked;
+
+    settings.showIP =
+        showIP.checked;
+
+    settings.showSpeed =
+        showSpeed.checked;
+
+    settings.notifications =
+        notifications.checked;
+
+
+    localStorage.setItem(
+        "novaSettings",
+        JSON.stringify(settings)
+    );
+
+    applySettings();
+}
+
+
+/* =========================
+   Events
+========================= */
+
+language.addEventListener(
+    "change",
+    saveSettings
+);
+
+theme.addEventListener(
+    "change",
+    saveSettings
+);
+
+autoConnect.addEventListener(
+    "change",
+    saveSettings
+);
+
+rememberServer.addEventListener(
+    "change",
+    saveSettings
+);
+
+showIP.addEventListener(
+    "change",
+    saveSettings
+);
+
+showSpeed.addEventListener(
+    "change",
+    saveSettings
+);
+
+notifications.addEventListener(
+    "change",
+    saveSettings
+);
+
+
+/* =========================
+   Language
+========================= */
+
+function updateLanguage() {
+
+    if (settings.language === "ar") {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        document.getElementById("pageTitle").textContent =
+            "⚙️ الإعدادات";
+
+        document.getElementById("pageDescription").textContent =
+            "إعدادات Turky VPN";
+
+        document.getElementById("generalTitle").textContent =
+            "عام";
+
+        document.getElementById("languageName").textContent =
+            "اللغة";
+
+        document.getElementById("languageDescription").textContent =
+            "لغة التطبيق";
+
+        document.getElementById("themeName").textContent =
+            "المظهر";
+
+        document.getElementById("themeDescription").textContent =
+            "مظهر التطبيق";
+
+        document.getElementById("connectionTitle").textContent =
+            "الاتصال";
+
+        document.getElementById("autoName").textContent =
+            "الاتصال التلقائي";
+
+        document.getElementById("autoDescription").textContent =
+            "الاتصال تلقائيًا";
+
+        document.getElementById("rememberName").textContent =
+            "تذكر الخادم";
+
+        document.getElementById("rememberDescription").textContent =
+            "تذكر آخر خادم";
+
+        document.getElementById("displayTitle").textContent =
+            "العرض";
+
+        document.getElementById("ipName").textContent =
+            "عرض عنوان IP";
+
+        document.getElementById("ipDescription").textContent =
+            "عرض عنوان VPN";
+
+        document.getElementById("speedName").textContent =
+            "عرض السرعة";
+
+        document.getElementById("speedDescription").textContent =
+            "عرض سرعة التحميل والرفع";
+
+        document.getElementById("notificationTitle").textContent =
+            "الإشعارات";
+
+        document.getElementById("notificationName").textContent =
+            "الإشعارات";
+
+        document.getElementById("notificationDescription").textContent =
+            "عرض إشعارات الاتصال";
+
+        document.getElementById("resetButton").textContent =
+            "إعادة ضبط الإعدادات";
+
+    } else {
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        document.getElementById("pageTitle").textContent =
+            "⚙️ Settings";
+
+        document.getElementById("pageDescription").textContent =
+            "Nova VPN preferences";
+
+        document.getElementById("generalTitle").textContent =
+            "General";
+
+        document.getElementById("languageName").textContent =
+            "Language";
+
+        document.getElementById("languageDescription").textContent =
+            "Application language";
+
+        document.getElementById("themeName").textContent =
+            "Theme";
+
+        document.getElementById("themeDescription").textContent =
+            "Application appearance";
+
+        document.getElementById("connectionTitle").textContent =
+            "Connection";
+
+        document.getElementById("autoName").textContent =
+            "Auto Connect";
+
+        document.getElementById("autoDescription").textContent =
+            "Connect automatically";
+
+        document.getElementById("rememberName").textContent =
+            "Remember Server";
+
+        document.getElementById("rememberDescription").textContent =
+            "Remember your last server";
+
+        document.getElementById("displayTitle").textContent =
+            "Display";
+
+        document.getElementById("ipName").textContent =
+            "Show IP Address";
+
+        document.getElementById("ipDescription").textContent =
+            "Show your VPN IP";
+
+        document.getElementById("speedName").textContent =
+            "Show Speed";
+
+        document.getElementById("speedDescription").textContent =
+            "Show download and upload speed";
+
+        document.getElementById("notificationTitle").textContent =
+            "Notifications";
+
+        document.getElementById("notificationName").textContent =
+            "Notifications";
+
+        document.getElementById("notificationDescription").textContent =
+            "Show connection notifications";
+
+        document.getElementById("resetButton").textContent =
+            "Reset Settings";
+    }
+}
+
+
+/* =========================
+   Reset
+========================= */
+
+function resetSettings() {
+
+    settings = {
+        ...defaults
+    };
+
+    localStorage.setItem(
+        "novaSettings",
+        JSON.stringify(settings)
+    );
+
+    applySettings();
+}
+
+
+/* Start */
+
+applySettings();
+
+</script>
+
+</body>
+</html>
